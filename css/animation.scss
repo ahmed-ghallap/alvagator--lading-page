@@ -1,0 +1,81 @@
+.header--nav {
+    .brgr-icon {
+        animation: show linear forwards;
+        animation-timeline: scroll(root);
+        animation-range: 100px 150px; 
+    }
+    .header--bg {
+        animation: shrink-bg linear forwards;
+        animation-timeline: scroll(root);
+        animation-range: 0% 150px; 
+    }
+    ul {
+        transform-origin: left top;
+        animation: shrink-ul linear forwards;
+        animation-timeline: scroll(root);
+        animation-range: 0% 100px;
+    }
+    .logo {
+        transform-origin: left top;
+        animation: shrink-img linear forwards;
+        animation-timeline: scroll(root);
+        animation-range: 0% 150px;
+    }
+    @keyframes shrink-bg {
+        to {
+            transform: scaleY(.6);
+        } 
+    }
+    @keyframes shrink-img {
+        to {
+            transform: scale(.6) translateY(-12px);
+        } 
+    }
+    @keyframes shrink-ul {
+        to {
+            opacity: 0;
+            max-height: 0px;
+            display: none;
+        } 
+    }
+    @keyframes show {
+        to {
+            max-width: 32px;
+            opacity: 1;
+            display: inline-block;
+        } 
+    }
+
+}
+
+.header--hero {
+    .card {
+        view-timeline-name: --card;
+        .card--wrapper {
+            animation: move-img linear forwards;
+            animation-timeline: --card;
+            animation-range: contain 25px exit ;
+        }
+        @keyframes move-img {
+            from {
+                transform: translateY(0px);
+            } 
+
+            to {
+                transform: translateY(-200px);
+            }
+        }
+    }
+}
+
+@keyframes fade-in {
+    0% {
+        transform: scale(.8);
+        opacity: 0;
+    } 
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+}
