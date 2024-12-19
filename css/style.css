@@ -1,9 +1,4 @@
 @import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap");
-.container {
-  width: 100%;
-  margin-inline: auto;
-  padding-inline: 0.5rem; }
-
 /* Extra small */
 @media screen and (min-width: 475px) {
   .container {
@@ -73,6 +68,60 @@
     transform: translateY(0px); }
   to {
     transform: translateY(-200px); } }
+#how-to-use {
+  overflow: clip; }
+  #how-to-use .right {
+    opacity: 0;
+    transform: translateX(200%) rotate(180deg);
+    animation: from-right linear forwards;
+    animation-timeline: view();
+    animation-range: entry 10% entry; }
+  #how-to-use .left {
+    opacity: 0;
+    transform: translateX(-200%) rotate(-180deg);
+    animation: from-left linear forwards;
+    animation-timeline: view();
+    animation-range: entry 10% entry; }
+@keyframes from-right {
+  0% {
+    opacity: 0;
+    transform: translateX(200%) rotate(180deg); }
+  100% {
+    opacity: 1;
+    transform: translateX(0) rotate(0deg); } }
+@keyframes from-left {
+  0% {
+    opacity: 0;
+    transform: translateX(-200%) rotate(-180deg); }
+  100% {
+    opacity: 1;
+    transform: translateX(0) rotate(0deg); } }
+  #how-to-use .yellow {
+    opacity: 0;
+    transform: translateX(-200%);
+    animation: slide-in-left linear forwards;
+    animation-timeline: view();
+    animation-range: entry entry 200px; }
+  #how-to-use .green {
+    opacity: 0;
+    transform: translateX(200%);
+    animation: slide-in-right linear forwards;
+    animation-timeline: view();
+    animation-range: entry; }
+@keyframes slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(200%); }
+  to {
+    opacity: 1;
+    transform: translateX(0); } }
+@keyframes slide-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(-200%); }
+  to {
+    opacity: 1;
+    transform: translateX(0); } }
 @keyframes fade-in {
   0% {
     transform: scale(0.8);
@@ -82,6 +131,8 @@
     opacity: 1; } }
 .header--nav {
   position: fixed;
+  left: 0;
+  top: 0;
   z-index: 1;
   display: flex;
   flex-direction: row-reverse;
@@ -173,25 +224,8 @@
         height: 100%;
         object-fit: contain; }
 
-main .headding, main section a {
-  position: relative;
-  z-index: 1;
-  margin-bottom: 3.5rem;
-  margin-inline: auto;
-  width: max-content;
-  font-size: 1rem;
-  font-weight: 600; }
-  main .headding::before, main section a::before {
-    position: absolute;
-    z-index: -1;
-    content: '';
-    display: inline-block;
-    width: calc(100% + 10px);
-    height: 50%;
-    background-color: aqua;
-    left: -5px;
-    top: 8px;
-    transform: rotate(-1deg); }
+main section a {
+  margin-bottom: 0; }
 
 main section {
   padding-block: 2rem; }
@@ -200,8 +234,7 @@ main {
   transform: translateY(-50px); }
   main section#why-alvagate {
     background: linear-gradient(to bottom left, #FFFD63, #FCC101);
-    border-radius: 40px;
-    padding-inline: .7rem; }
+    border-radius: 40px; }
     main section#why-alvagate .wrapper {
       display: flex;
       flex-direction: column;
@@ -313,6 +346,129 @@ main {
       color: #2B2B2B;
       padding-block: .5rem;
       line-height: 1.3; }
+  main #services .card, main #services .offer-card {
+    padding: 1rem;
+    background-image: linear-gradient(to bottom, #008D7C, #003835);
+    border-radius: 25px;
+    color: white; }
+    main #services .card h3, main #services .card p, main #services .card .btn, main #services .offer-card h3, main #services .offer-card p, main #services .offer-card .btn {
+      display: block;
+      font-size: 1.2rem;
+      text-align: center;
+      margin-inline: auto; }
+    main #services .card .btn, main #services .offer-card .btn {
+      padding-block: .7rem;
+      width: 80%;
+      font-weight: 500; }
+  main #services .card {
+    margin-bottom: 1.5rem; }
+    main #services .card h3 {
+      padding-block: 0rem 1rem; }
+    main #services .card ul {
+      line-height: 1.5;
+      font-size: 1.1rem;
+      padding-bottom: 1.5rem;
+      padding-right: 2rem;
+      list-style: none; }
+      main #services .card ul li {
+        position: relative; }
+        main #services .card ul li::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          right: -36px;
+          background: url(../assets/icons/check-yellow.svg) no-repeat center/cover;
+          width: 20px;
+          aspect-ratio: 1; }
+      main #services .card ul .money {
+        font-weight: 700;
+        text-shadow: 0 2px 1px #BB6B02; }
+  main #services .offer-card h3, main #services .offer-card p {
+    padding-bottom: 1.5rem; }
+
+section#form form {
+  padding-block: 2rem 1rem; }
+  section#form form input, section#form form .btn {
+    width: 100%;
+    height: 60px;
+    margin-bottom: 1rem; }
+  section#form form .btn {
+    margin-top: 1.5rem;
+    border-radius: 10px;
+    border: 3px solid #2B2B2B;
+    background-color: #FFFD63; }
+  section#form form input {
+    border-radius: 20px;
+    padding-inline: 1.2rem;
+    border: 3px solid #065B52;
+    background: transparent; }
+    section#form form input:hover, section#form form input:active {
+      background-color: #C2FFF5; }
+  section#form form input::placeholder {
+    color: #065B52; }
+
+section#question .item img {
+  width: 24px;
+  position: absolute;
+  right: 1rem;
+  top: 14px;
+  transition: 500ms; }
+section#question .item {
+  position: relative;
+  background-color: #FAFEEF;
+  box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  margin-bottom: 10px;
+  transition: 500ms;
+  overflow: clip;
+  max-height: 50px; }
+  section#question .item:hover {
+    max-height: fit-content; }
+    section#question .item:hover img {
+      transform: rotate(180deg); }
+section#question .accordion {
+  text-align: center;
+  width: 100%;
+  height: 50px;
+  color: #BB6B02;
+  background-color: transparent;
+  border: none;
+  outline: none; }
+section#question .panel {
+  color: #2B2B2B;
+  padding-inline: 1rem;
+  padding-block: 1rem; }
+section#question .btn {
+  margin-top: 2rem;
+  width: 100%;
+  height: 60px;
+  text-align: center;
+  line-height: 60px; }
+
+#footer {
+  padding-top: 1rem;
+  color: #2B2B2B;
+  text-align: center;
+  font-size: .9rem;
+  font-weight: 500; }
+  #footer > div {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: center;
+    padding-block: 1rem; }
+  #footer p {
+    padding-block: 1rem; }
+  #footer hr {
+    border-color: #2B2B2B; }
+  #footer img {
+    width: 60px;
+    aspect-ratio: 1; }
+  #footer .list {
+    display: flex;
+    gap: .5rem; }
+    #footer .list img {
+      width: 24px; }
 
 *,
 *::after,
@@ -326,10 +482,32 @@ a {
   text-decoration: none;
   color: #2B2B2B; }
 
+.headding, a.link {
+  position: relative;
+  display: block;
+  z-index: 1;
+  margin-bottom: 3.5rem;
+  margin-inline: auto;
+  width: max-content;
+  font-size: 1rem;
+  font-weight: 600; }
+  .headding::before, a.link::before {
+    position: absolute;
+    z-index: -1;
+    content: '';
+    display: inline-block;
+    width: calc(100% + 10px);
+    height: 50%;
+    background-color: aqua;
+    left: -5px;
+    top: 8px;
+    transform: rotate(-1deg); }
+
 .btn {
   display: inline-block;
   text-decoration: none;
   text-align: center;
+  font-weight: 600;
   background-color: #FFFD63;
   color: #2B2B2B;
   border: 2px solid #2B2B2B;
@@ -346,5 +524,34 @@ body {
 
 .shadow {
   box-shadow: 0 0 20px 2px rgba(0, 34, 46, 0.362); }
+
+.slider {
+  overflow: clip;
+  width: 100%;
+  height: var(--height);
+  mask-image: linear-gradient(to right, transparent, #000 10% 90%, transparent); }
+  .slider:hover .item {
+    animation-play-state: paused !important;
+    filter: grayscale(1); }
+  .slider .list {
+    position: relative;
+    display: flex; }
+    .slider .list .item {
+      position: absolute;
+      left: 100%;
+      height: 100%;
+      width: var(--width);
+      animation: auto-run 10s linear infinite;
+      animation-delay: calc( (10s / var(--quantity)) * (var(--position) - 1) ); }
+      .slider .list .item:hover {
+        filter: grayscale(0); }
+      .slider .list .item img {
+        width: 100%; }
+
+@keyframes auto-run {
+  from {
+    left: 100%; }
+  to {
+    left: calc(var(--width) * -1); } }
 
 /*# sourceMappingURL=style.css.map */

@@ -1,0 +1,111 @@
+section#form {
+    form {
+        padding-block: 2rem 1rem;
+        input, .btn {
+            width: 100%;
+            height: 60px;
+            margin-bottom: 1rem;
+        }
+        .btn {
+            margin-top: 1.5rem;
+            border-radius: 10px;
+            border: 3px solid $black;
+            background-color: $primary-light;
+        }
+        input {
+            border-radius: 20px;
+            padding-inline: 1.2rem;
+            border: 3px solid #065B52;
+            background: transparent;
+            &:hover,
+            &:active
+            {
+                background-color: $secondary;
+            }
+        }
+        input::placeholder {
+            color: #065B52;
+        }
+    }
+}
+
+section#question {
+    .item {
+        img {
+            width: 24px;
+            position: absolute;
+            right: 1rem;
+            top: 14px;
+            transition: 500ms;
+        }
+    }
+    .item {
+        position: relative;
+        background-color: $bg-yellow;
+        box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2);
+        border-radius: 10px;
+        margin-bottom: 10px;
+        transition: 500ms;
+        overflow: clip;
+        max-height: 50px;
+        &:hover {
+            max-height: fit-content;
+            img {
+                transform: rotate(180deg);
+            }
+        }
+    }
+    .accordion {
+        text-align: center;
+        width: 100%;
+        height: 50px;
+        color: $primary-dark;
+        background-color: transparent;
+        border:none;
+        outline: none;
+    }
+    .panel {
+        color: $black;
+        padding-inline: 1rem;
+        padding-block: 1rem;
+    }
+    .btn {
+        margin-top: 2rem;
+        width: 100%;
+        height: 60px;
+        text-align: center;
+        line-height: 60px;
+    }
+
+}
+#footer {
+    padding-top: 1rem;
+    color: $black;
+    text-align: center;
+    font-size: .9rem;
+    font-weight: 500;
+    & > div {
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: space-between;
+        align-items: center;
+        padding-block: 1rem;
+    }
+    p {
+        padding-block: 1rem;
+    }
+    hr {
+        border-color: $black;
+    }
+    img {
+        width: 60px;
+        aspect-ratio: 1;
+    }
+    .list {
+        display: flex;
+        gap: .5rem;
+        img {
+            width: 24px;
+        }
+    }
+}

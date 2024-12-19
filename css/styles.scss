@@ -7,6 +7,7 @@
 @import './animation.scss';
 @import './header.scss';
 @import './main.scss';
+@import './footer.scss';
 
 *,
 *::after,
@@ -22,10 +23,34 @@ a {
   color: $black;
 }
 
+.headding, a.link{
+    position: relative;
+    display: block;
+    z-index: 1;
+    margin-bottom: 3.5rem;
+    margin-inline: auto;
+    width: max-content;
+    font-size: 1rem;
+    font-weight: 600;
+    &::before {
+        position: absolute;
+        z-index: -1;
+        content: '';
+        display: inline-block;
+        width: calc(100% + 10px);
+        height: 50%;
+        background-color: aqua;
+        left: -5px;
+        top: 8px;
+        transform: rotate(-1deg);
+    }
+}
+
 .btn {
   display: inline-block;
   text-decoration: none;
   text-align: center;
+  font-weight: 600;
   background-color: $primary-light;
   color: $black;
   border: 2px solid $black;
@@ -45,4 +70,46 @@ body {
 
 .shadow {
   box-shadow: 0 0 20px 2px rgba(0, 34, 46, 0.362);
+}
+
+.slider {
+
+  &:hover  {
+    .item {
+      animation-play-state: paused !important;
+      filter: grayscale(1);
+    }
+  }
+  overflow: clip;
+  width: 100%;
+  // min-width: calc(var(--width) * var(--quantity));
+  height: var(--height);
+  mask-image: linear-gradient(to right, transparent, #000 10% 90%, transparent );
+  .list {
+    position: relative;
+    display: flex;
+    .item {
+      &:hover {
+        filter: grayscale(0);
+      }
+      position: absolute;
+      left: 100%;
+      height: 100%;
+      width: var(--width);
+      animation: auto-run 10s linear infinite;
+      animation-delay: calc( (10s / var(--quantity)) * (var(--position) - 1) );
+      img {
+        width: 100%;
+      }
+    }
+  }
+}
+
+@keyframes auto-run {
+    from {
+      left: 100%;
+    } 
+    to {
+      left: calc(var(--width) * -1);
+    }
 }
