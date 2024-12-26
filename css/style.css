@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap");
 /* Extra small */
 @media screen and (min-width: 475px) {
@@ -23,51 +24,58 @@
 @media screen and (min-width: 1536px) {
   .container {
     max-width: 1536px; } }
-.header--nav .brgr-icon {
-  animation: show linear forwards;
-  animation-timeline: scroll(root);
-  animation-range: 100px 150px; }
-.header--nav .header--bg {
-  animation: shrink-bg linear forwards;
-  animation-timeline: scroll(root);
-  animation-range: 0% 150px; }
-.header--nav ul {
-  transform-origin: left top;
-  animation: shrink-ul linear forwards;
-  animation-timeline: scroll(root);
-  animation-range: 0% 100px; }
 .header--nav .logo {
   transform-origin: left top;
-  animation: shrink-img linear forwards;
+  animation: shrink-img ease forwards;
+  animation-timeline: scroll(root);
+  animation-range: 0% 150px; }
+@keyframes shrink-img {
+  to {
+    transform: scale(0.6) translateY(10px); } }
+.header--nav .header--bg {
+  transform-origin: left top;
+  animation: shrink-bg ease forwards;
   animation-timeline: scroll(root);
   animation-range: 0% 150px; }
 @keyframes shrink-bg {
   to {
-    transform: scaleY(0.6); } }
-@keyframes shrink-img {
-  to {
-    transform: scale(0.6) translateY(-12px); } }
-@keyframes shrink-ul {
-  to {
-    opacity: 0;
-    max-height: 0px;
-    display: none; } }
-@keyframes show {
-  to {
-    max-width: 32px;
-    opacity: 1;
-    display: inline-block; } }
+    transform: scaleY(0.65); } }
 .header--hero .card {
   view-timeline-name: --card; }
   .header--hero .card .card--wrapper {
+    transform-origin: center center;
+    transform: scale(1.5);
     animation: move-img linear forwards;
     animation-timeline: --card;
-    animation-range: contain 25px exit; }
+    animation-range: contain -250px exit -170px; }
 @keyframes move-img {
-  from {
-    transform: translateY(0px); }
   to {
-    transform: translateY(-200px); } }
+    transform: scale(1); } }
+#why-alvagate .wrapper .item {
+  animation: fade-in ease forwards;
+  animation-timeline: view();
+  animation-range: 0% 30%; }
+@keyframes fade-in {
+  0% {
+    transform: scale(0.4);
+    opacity: 0; }
+  100% {
+    transform: scale(1);
+    opacity: 1; } }
+#app .item {
+  position: sticky;
+  top: 120px; }
+
+@supports (animation-timeline: view()) {
+  #app .item {
+    animation: fade-up ease forwards;
+    animation-timeline: view();
+    animation-range: 700px contain; }
+  @keyframes fade-up {
+    to {
+      transform: translateY(20%) scale(0.6); } }
+  #app .item:last-child {
+    animation-range: 700px 1700px; } }
 #how-to-use {
   overflow: clip; }
   #how-to-use .right {
@@ -75,124 +83,135 @@
     transform: translateX(200%) rotate(180deg);
     animation: from-right linear forwards;
     animation-timeline: view();
-    animation-range: entry 10% entry; }
+    animation-range: 0% 40%; }
   #how-to-use .left {
     opacity: 0;
     transform: translateX(-200%) rotate(-180deg);
     animation: from-left linear forwards;
     animation-timeline: view();
-    animation-range: entry 10% entry; }
+    animation-range: 0% 40%; }
 @keyframes from-right {
   0% {
     opacity: 0;
-    transform: translateX(200%) rotate(180deg); }
+    transform: translateX(200%) rotate(90deg); }
   100% {
     opacity: 1;
     transform: translateX(0) rotate(0deg); } }
 @keyframes from-left {
   0% {
     opacity: 0;
-    transform: translateX(-200%) rotate(-180deg); }
+    transform: translateX(-200%) rotate(-90deg); }
   100% {
     opacity: 1;
     transform: translateX(0) rotate(0deg); } }
   #how-to-use .yellow {
     opacity: 0;
-    transform: translateX(-200%);
+    transform: translateX(-100%);
     animation: slide-in-left linear forwards;
     animation-timeline: view();
-    animation-range: entry entry 200px; }
+    animation-range: 0% 35%; }
   #how-to-use .green {
     opacity: 0;
-    transform: translateX(200%);
+    transform: translateX(100%);
     animation: slide-in-right linear forwards;
     animation-timeline: view();
-    animation-range: entry; }
+    animation-range: 0% 35%; }
 @keyframes slide-in-right {
   from {
     opacity: 0;
-    transform: translateX(200%); }
+    transform: translateX(100%); }
   to {
     opacity: 1;
     transform: translateX(0); } }
 @keyframes slide-in-left {
   from {
     opacity: 0;
-    transform: translateX(-200%); }
+    transform: translateX(-100%); }
   to {
     opacity: 1;
     transform: translateX(0); } }
-@keyframes fade-in {
-  0% {
-    transform: scale(0.8);
-    opacity: 0; }
-  100% {
-    transform: scale(1);
-    opacity: 1; } }
+.slider:hover .item {
+  animation-play-state: paused !important;
+  filter: grayscale(1); }
+.slider .list .item {
+  animation: auto-run 10s linear infinite;
+  animation-delay: calc( (10s / var(--quantity)) * (var(--position) - 1) ); }
+  .slider .list .item:hover {
+    filter: grayscale(0); }
+
+@keyframes auto-run {
+  from {
+    left: 100%; }
+  to {
+    left: calc(var(--width) * -1); } }
+header {
+  position: relative; }
+
 .header--nav {
   position: fixed;
-  left: 0;
   top: 0;
-  z-index: 1;
-  display: flex;
-  flex-direction: row-reverse;
-  justify-content: space-between;
-  width: 100%;
-  padding-block: 1rem .1rem;
-  padding-inline: .6rem;
-  font-size: 1.2rem; }
+  left: 0;
+  z-index: 8;
+  width: 100vw;
+  height: fit-content; }
   .header--nav .header--bg {
-    background: linear-gradient(to right, #FAFEEF 70%, #EDFFFB);
-    z-index: -1;
     position: absolute;
     left: 0;
     top: 0;
-    height: 120px;
-    width: 100vw;
-    transform-origin: left top; }
-  .header--nav .logo {
-    transform: translateY(-8px);
-    width: 100px;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    height: calc(100% + .5rem);
+    background: linear-gradient(to right, #FAFEEF 70%, #EDFFFB); }
+
+.header--nav .nav {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between; }
+  .header--nav .nav .right {
+    height: max-content;
+    padding-top: .7rem; }
+  .header--nav .nav .logo {
+    height: 150px;
+    transform: translate(-13px, 5px);
     object-fit: contain; }
-  .header--nav .right {
-    position: relative;
-    display: flex;
-    flex-direction: row-reverse;
-    gap: .5rem; }
-    .header--nav .right .brgr-icon {
-      max-width: 0px;
-      overflow: clip;
-      border: none;
-      outline: none;
-      background: none;
-      height: fit-content; }
-      .header--nav .right .brgr-icon img {
-        width: 100%;
-        object-fit: cover; }
-    .header--nav .right .btn {
-      height: fit-content;
-      padding: .2rem 1.2rem;
-      border-radius: 6px;
-      font-size: 1.04rem; }
-    .header--nav .right ul {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      max-height: 100%;
-      max-width: 100%;
-      overflow: clip;
-      font-size: 1.04rem;
-      text-align: center;
-      list-style: none; }
+
+.header--nav .nav .right {
+  display: flex;
+  flex-direction: row-reverse; }
+  .header--nav .nav .right summary {
+    list-style: none; }
+    .header--nav .nav .right summary img {
+      border-radius: 5px;
+      box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2); }
+  .header--nav .nav .right .btn {
+    display: grid;
+    place-items: center;
+    height: 32px;
+    width: 120px;
+    margin-inline: .7rem; }
+  .header--nav .nav .right details {
+    position: relative; }
+  .header--nav .nav .right details ul {
+    position: absolute;
+    top: calc(100% + .5rem);
+    list-style: none;
+    background: linear-gradient(to right, #FAFEEF 70%, #EDFFFB) fixed;
+    max-height: fit-content;
+    overflow: clip;
+    padding-inline: 1rem;
+    border-radius: 8px;
+    z-index: 0;
+    line-height: 1.6; }
 
 .header--hero {
   text-align: center;
   padding-top: 140px; }
   .header--hero h1 {
-    font-size: 2.4rem;
+    font-size: 2rem;
     font-weight: 500;
     line-height: 1.15;
-    padding-bottom: 1.9rem; }
+    padding-block: 5rem 1.9rem; }
   .header--hero p {
     text-align: center;
     font-size: 1.04rem;
@@ -202,6 +221,10 @@
       color: #BB6B02;
       font-weight: 400; }
   .header--hero .btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: .5rem;
     font-size: 1.04rem;
     font-weight: 600;
     padding-block: 1rem;
@@ -212,10 +235,11 @@
     padding-block: .6rem 30px;
     font-size: .9rem; }
   .header--hero .card {
+    margin-inline: auto;
     height: 500px;
     overflow: clip;
-    width: 100%;
-    border: 6px solid #FCC101;
+    width: fit-content;
+    border: 6px solid #2B2B2B;
     border-radius: 1rem; }
     .header--hero .card--wrapper {
       height: 800px; }
@@ -232,159 +256,180 @@ main section {
 
 main {
   transform: translateY(-50px); }
-  main section#why-alvagate {
-    background: linear-gradient(to bottom left, #FFFD63, #FCC101);
-    border-radius: 40px; }
-    main section#why-alvagate .wrapper {
-      display: flex;
-      flex-direction: column;
-      gap: 2.7rem; }
-    main section#why-alvagate .wrapper .item {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-direction: row-reverse;
-      height: max-content;
-      gap: 1rem;
-      opacity: 0;
-      animation: fade-in linear forwards;
-      animation-timeline: view();
-      animation-range: entry entry 200%; }
-      main section#why-alvagate .wrapper .item strong {
-        font-weight: 500;
-        color: #BB6B02; }
-      main section#why-alvagate .wrapper .item a {
-        margin: 0; }
-      main section#why-alvagate .wrapper .item .textBx h3, main section#why-alvagate .wrapper .item .textBx p {
-        font-size: 1.1rem; }
-      main section#why-alvagate .wrapper .item .textBx h3 {
-        margin-bottom: .5rem;
-        line-height: 1.2; }
-      main section#why-alvagate .wrapper .item .textBx p {
-        line-height: 1.3; }
-      main section#why-alvagate .wrapper .item .imgBx img {
-        width: 90px;
-        object-fit: cover; }
-  main section#app {
-    position: relative;
-    z-index: -1; }
-    main section#app .item {
-      position: sticky;
-      top: 120px;
-      text-align: center;
-      background: linear-gradient(to right, #FAFEEF 70%, #EDFFFB); }
-      main section#app .item h2 {
-        padding-block: 2rem; }
-      main section#app .item img {
-        width: 100%;
-        object-fit: cover;
-        height: 500px;
-        border: 7px solid;
-        border-radius: 15px; }
-  main section#how-to-use .init {
-    text-align: center; }
-    main section#how-to-use .init p {
-      font-weight: 600;
-      font-size: 1.3; }
-  main section#how-to-use .sub-branch {
+
+main section#why-alvagate {
+  background: linear-gradient(to bottom left, #FFFD63, #FCC101);
+  border-radius: 40px; }
+  main section#why-alvagate .wrapper {
     display: flex;
-    gap: 1rem; }
-    main section#how-to-use .sub-branch h2 {
-      padding: .7rem;
-      font-size: 1.1rem;
+    flex-direction: column;
+    gap: 3.5rem; }
+  main section#why-alvagate .wrapper .item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row-reverse;
+    height: max-content;
+    gap: 1rem;
+    opacity: 0; }
+    main section#why-alvagate .wrapper .item strong {
       font-weight: 500;
-      border-radius: 10px; }
-    main section#how-to-use .sub-branch img {
-      margin-top: 2.2rem;
-      max-width: 100%;
-      width: 170px;
-      border-radius: 12px; }
-    main section#how-to-use .sub-branch .left h2 {
-      background-color: #FAFEEF;
-      color: #BB6B02;
-      box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2); }
-    main section#how-to-use .sub-branch .right img {
-      box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2); }
-    main section#how-to-use .sub-branch .right h2 {
-      background-color: #EDFFFB;
-      color: #008D7C;
-      box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2); }
-  main section#how-to-use .green, main section#how-to-use .yellow {
-    margin-top: 22px;
-    padding-inline: 1.4rem;
-    box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2);
-    border-radius: 25px; }
-    main section#how-to-use .green h3:first-child, main section#how-to-use .yellow h3:first-child {
-      text-align: center; }
-    main section#how-to-use .green h3, main section#how-to-use .yellow h3 {
-      text-align: start;
-      font-weight: 500;
-      padding-top: 1rem; }
-    main section#how-to-use .green ul, main section#how-to-use .yellow ul {
-      color: #2B2B2B;
-      list-style: none;
-      padding-block: 1.5rem;
-      line-height: 1.4; }
-      main section#how-to-use .green ul li, main section#how-to-use .yellow ul li {
-        width: fit-content; }
-        main section#how-to-use .green ul li::before, main section#how-to-use .yellow ul li::before {
-          transform: translateX(12px);
-          display: inline-block;
-          content: '';
-          background-color: green;
-          width: 10px;
-          aspect-ratio: 1; }
-  main section#how-to-use .green {
-    background-color: #EDFFFB;
-    color: #008D7C; }
-  main section#how-to-use .yellow {
-    background-color: #FAFEEF;
-    color: #BB6B02; }
-    main section#how-to-use .yellow ul li::before {
-      background-color: #FCC101; }
-    main section#how-to-use .yellow p {
-      color: #2B2B2B;
-      padding-block: .5rem;
+      color: #BB6B02; }
+    main section#why-alvagate .wrapper .item a {
+      margin: 0; }
+    main section#why-alvagate .wrapper .item .textBx h3, main section#why-alvagate .wrapper .item .textBx p {
+      font-size: 1.1rem; }
+    main section#why-alvagate .wrapper .item .textBx h3 {
+      margin-bottom: .5rem;
+      line-height: 1.2; }
+    main section#why-alvagate .wrapper .item .textBx p {
       line-height: 1.3; }
-  main #services .card, main #services .offer-card {
-    padding: 1rem;
-    background-image: linear-gradient(to bottom, #008D7C, #003835);
-    border-radius: 25px;
-    color: white; }
-    main #services .card h3, main #services .card p, main #services .card .btn, main #services .offer-card h3, main #services .offer-card p, main #services .offer-card .btn {
-      display: block;
-      font-size: 1.2rem;
-      text-align: center;
-      margin-inline: auto; }
-    main #services .card .btn, main #services .offer-card .btn {
-      padding-block: .7rem;
-      width: 80%;
-      font-weight: 500; }
-  main #services .card {
-    margin-bottom: 1.5rem; }
-    main #services .card h3 {
-      padding-block: 0rem 1rem; }
-    main #services .card ul {
-      line-height: 1.5;
-      font-size: 1.1rem;
-      padding-bottom: 1.5rem;
-      padding-right: 2rem;
-      list-style: none; }
-      main #services .card ul li {
-        position: relative; }
-        main #services .card ul li::before {
-          content: '';
-          position: absolute;
-          top: 0;
-          right: -36px;
-          background: url(../assets/icons/check-yellow.svg) no-repeat center/cover;
-          width: 20px;
-          aspect-ratio: 1; }
-      main #services .card ul .money {
-        font-weight: 700;
-        text-shadow: 0 2px 1px #BB6B02; }
-  main #services .offer-card h3, main #services .offer-card p {
-    padding-bottom: 1.5rem; }
+    main section#why-alvagate .wrapper .item .imgBx img {
+      width: 90px;
+      object-fit: cover; }
+
+main section#app {
+  position: relative;
+  z-index: -1; }
+  main section#app .item {
+    position: sticky;
+    top: 120px;
+    text-align: center;
+    background: linear-gradient(to right, #FAFEEF 70%, #EDFFFB);
+    height: 720px; }
+    main section#app .item h2 {
+      padding-block: 2rem; }
+      main section#app .item h2 .icons {
+        display: block;
+        padding-top: .5rem; }
+        main section#app .item h2 .icons img {
+          width: 32px;
+          margin-left: 8px; }
+    main section#app .item .imgBx {
+      position: relative;
+      height: 550px;
+      width: 100%;
+      border: 7px solid;
+      border-radius: 15px;
+      overflow: clip; }
+      main section#app .item .imgBx img {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 100%;
+        object-fit: cover; }
+
+main section#how-to-use .init {
+  text-align: center; }
+  main section#how-to-use .init p {
+    font-weight: 600;
+    font-size: 1.3; }
+main section#how-to-use .sub-branch {
+  display: flex;
+  gap: 1rem; }
+  main section#how-to-use .sub-branch h2 {
+    padding: .7rem;
+    font-size: 1.1rem;
+    font-weight: 500;
+    border-radius: 10px; }
+  main section#how-to-use .sub-branch img {
+    margin-top: 2.2rem;
+    max-width: 100%;
+    width: 170px;
+    border-radius: 12px; }
+  main section#how-to-use .sub-branch .left h2 {
+    background-color: #FAFEEF;
+    color: #BB6B02;
+    box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2); }
+  main section#how-to-use .sub-branch .right img {
+    box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2); }
+  main section#how-to-use .sub-branch .right h2 {
+    background-color: #EDFFFB;
+    color: #008D7C;
+    box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2); }
+main section#how-to-use .green, main section#how-to-use .yellow {
+  margin-top: 22px;
+  padding-inline: 1.4rem;
+  box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 25px; }
+  main section#how-to-use .green h3:first-child, main section#how-to-use .yellow h3:first-child {
+    text-align: center; }
+  main section#how-to-use .green h3, main section#how-to-use .yellow h3 {
+    text-align: start;
+    font-weight: 500;
+    padding-top: 1rem; }
+  main section#how-to-use .green ul, main section#how-to-use .yellow ul {
+    color: #2B2B2B;
+    list-style: none;
+    padding-block: 1.5rem;
+    line-height: 1.4; }
+    main section#how-to-use .green ul li, main section#how-to-use .yellow ul li {
+      width: fit-content; }
+      main section#how-to-use .green ul li::before, main section#how-to-use .yellow ul li::before {
+        transform: translateX(12px);
+        display: inline-block;
+        content: '';
+        background-color: green;
+        width: 10px;
+        aspect-ratio: 1; }
+main section#how-to-use .green {
+  background-color: #EDFFFB;
+  color: #008D7C; }
+main section#how-to-use .yellow {
+  background-color: #FAFEEF;
+  color: #BB6B02; }
+  main section#how-to-use .yellow ul li::before {
+    background-color: #FCC101; }
+  main section#how-to-use .yellow p {
+    color: #2B2B2B;
+    padding-block: .5rem;
+    line-height: 1.3; }
+
+main #services .card, main #services .offer-card {
+  padding: 1rem;
+  background-image: linear-gradient(to bottom, #008D7C, #003835);
+  border-radius: 25px;
+  color: white; }
+  main #services .card h3, main #services .card p, main #services .card .btn, main #services .offer-card h3, main #services .offer-card p, main #services .offer-card .btn {
+    display: block;
+    font-size: 1.2rem;
+    text-align: center;
+    margin-inline: auto; }
+  main #services .card .btn, main #services .offer-card .btn {
+    padding-block: .7rem;
+    width: 80%;
+    font-weight: 500; }
+main #services .card {
+  margin-bottom: 1.5rem; }
+  main #services .card h3 {
+    padding-block: 0rem .2rem;
+    font-size: 1.2rem; }
+  main #services .card .money {
+    font-size: 2.4rem;
+    font-weight: 700;
+    text-align: center;
+    text-shadow: 0 2px 1px #BB6B02;
+    padding-bottom: 1rem; }
+    main #services .card .money small {
+      font-size: .9rem; }
+  main #services .card ul {
+    line-height: 1.5;
+    font-size: 1.1rem;
+    padding-bottom: 1.5rem;
+    padding-right: 2rem;
+    list-style: none; }
+    main #services .card ul li {
+      position: relative; }
+      main #services .card ul li::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: -36px;
+        background: url(../assets/icons/check-yellow.svg) no-repeat center/cover;
+        width: 20px;
+        aspect-ratio: 1; }
+main #services .offer-card h3, main #services .offer-card p {
+  padding-bottom: 1.5rem; }
 
 section#form form {
   padding-block: 2rem 1rem; }
@@ -400,7 +445,7 @@ section#form form {
   section#form form input {
     border-radius: 20px;
     padding-inline: 1.2rem;
-    border: 3px solid #065B52;
+    border: 2px solid #065B52;
     background: transparent; }
     section#form form input:hover, section#form form input:active {
       background-color: #C2FFF5; }
@@ -418,18 +463,15 @@ section#question .item {
   background-color: #FAFEEF;
   box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2);
   border-radius: 10px;
-  margin-bottom: 10px;
-  transition: 500ms;
-  overflow: clip;
-  max-height: 50px; }
-  section#question .item:hover {
-    max-height: fit-content; }
-    section#question .item:hover img {
-      transform: rotate(180deg); }
+  margin-bottom: 10px; }
+  section#question .item details summary {
+    list-style: none; }
 section#question .accordion {
+  display: inline-block;
   text-align: center;
   width: 100%;
   height: 50px;
+  line-height: 50px;
   color: #BB6B02;
   background-color: transparent;
   border: none;
@@ -482,6 +524,35 @@ a {
   text-decoration: none;
   color: #2B2B2B; }
 
+.nav-link, .active {
+  position: relative;
+  transition: 200ms; }
+  .nav-link:hover::before, .nav-link:active::before, .nav-link:focus::before, .active:hover::before, .active:active::before, .active:focus::before {
+    width: 100%;
+    /* العرض 100% عند التمرير */
+    transform: rotate(-2deg) scaleX(1.1);
+    /* تأثير التوسع */ }
+  .nav-link::before, .active::before {
+    content: '';
+    position: absolute;
+    display: inline-block;
+    z-index: -1;
+    left: 0;
+    top: 8px;
+    background-color: aqua;
+    width: 0;
+    /* العرض 0px في البداية */
+    height: 50%;
+    /* يمكن أن تبقى ثابتة */
+    transition: width 200ms, transform 200ms;
+    /* الانتقال لتغيير الـ width و الـ transform */ }
+
+.active::before {
+  width: 100%;
+  /* العرض 100% عند التمرير */
+  transform: rotate(-2deg) scaleX(1.1);
+  /* تأثير التوسع */ }
+
 .headding, a.link {
   position: relative;
   display: block;
@@ -510,6 +581,7 @@ a {
   font-weight: 600;
   background-color: #FFFD63;
   color: #2B2B2B;
+  margin-inline: auto;
   border: 2px solid #2B2B2B;
   border-radius: 8px;
   outline: none;

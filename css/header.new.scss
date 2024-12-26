@@ -1,0 +1,124 @@
+header {
+  position: relative;
+}
+.header--nav {
+  position: fixed;
+  top: 0; left: 0;
+  z-index: 8;
+  width: 100vw;
+  height: fit-content;
+  .header--bg {
+    position: absolute;
+    left: 0; top: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    height: calc(100% + .5rem);
+    background: linear-gradient(to right, $bg-yellow 70%, $bg-green);
+  }
+}
+.header--nav .nav {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  .right {
+    height: max-content;
+    padding-top: .7rem;
+  }
+  .logo {
+    height: 150px;
+    transform: translate(-13px, 5px);
+    object-fit: contain;
+  }
+}
+.header--nav .nav .right {
+  display: flex;
+  flex-direction: row-reverse;
+  summary {
+    list-style: none;
+    img {
+      border-radius: 5px;
+      // filter: drop-shadow(0px 4px 10px green);
+      box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2);
+    }
+  }
+  .btn {
+    display: grid;
+    place-items: center;
+    height: 32px;
+    width: 120px;
+    margin-inline: .7rem;
+  }
+  details {
+    position: relative;
+  }
+  details ul {
+    position: absolute;
+    top: calc(100% + .5rem);
+    list-style: none;
+    background: linear-gradient(to right, $bg-yellow 70%, $bg-green) fixed;
+    max-height: fit-content;
+    overflow: clip;
+    // background-color: #effff9;
+    padding-inline: 1rem;
+    border-radius: 8px;
+    z-index: 0;
+    line-height: 1.6;
+  }
+}
+
+
+.header--hero {
+  text-align: center;
+  padding-top: 140px;
+  h1 {
+    font-size: 2rem;
+    font-weight: 500;
+    line-height: 1.15;
+    padding-block: 5rem 1.9rem;
+  }
+  p {
+    text-align: center;
+    // text-align-last: center;
+    font-size: 1.04rem;
+    line-height: 1.4;
+    padding-bottom: 2rem;
+    strong {
+      color: $yellow-dark;
+      font-weight: 400;
+    }
+  }
+  .btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: .5rem;
+    font-size: 1.04rem;
+    font-weight: 600;
+    padding-block: 1rem;
+    width: 100%;
+    border-radius: 10px;
+  }
+  small {
+    display: block;
+    padding-block: .6rem 30px;
+    font-size: .9rem;
+  }
+
+  .card {
+    margin-inline: auto;
+    height: 500px;
+    overflow: clip;
+    width: fit-content;
+    border: 6px solid $black;
+    border-radius: 1rem;
+    &--wrapper {
+      height: 800px;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+    }
+  }
+}

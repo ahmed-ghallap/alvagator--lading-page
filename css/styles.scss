@@ -5,7 +5,7 @@
 @import 'response.scss';
 @import 'const.scss';
 @import './animation.scss';
-@import './header.scss';
+@import './header.new.scss';
 @import './main.scss';
 @import './footer.scss';
 
@@ -22,6 +22,33 @@ a {
   text-decoration: none;
   color: $black;
 }
+.nav-link, .active {
+  position: relative;
+  transition: 200ms;
+  &:hover, &:active, &:focus {
+    &::before {
+      width: 100%;  /* العرض 100% عند التمرير */
+      transform: rotate(-2deg) scaleX(1.1); /* تأثير التوسع */
+    }
+  }
+  &::before {
+    content: '';
+    position: absolute;
+    display: inline-block;
+    z-index: -1;
+    left: 0;
+    top: 8px;
+    background-color: aqua;
+    width: 0;  /* العرض 0px في البداية */
+    height: 50%; /* يمكن أن تبقى ثابتة */
+    transition: width 200ms, transform 200ms; /* الانتقال لتغيير الـ width و الـ transform */
+  }
+}
+.active::before {
+    width: 100%;  /* العرض 100% عند التمرير */
+    transform: rotate(-2deg) scaleX(1.1); /* تأثير التوسع */
+}
+
 
 .headding, a.link{
     position: relative;
@@ -53,6 +80,7 @@ a {
   font-weight: 600;
   background-color: $primary-light;
   color: $black;
+  margin-inline: auto ;
   border: 2px solid $black;
   border-radius: 8px;
   outline: none;

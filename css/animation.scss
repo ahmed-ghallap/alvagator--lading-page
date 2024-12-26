@@ -1,69 +1,87 @@
-.header--nav {
-    .brgr-icon {
-        animation: show linear forwards;
-        animation-timeline: scroll(root);
-        animation-range: 100px 150px; 
-    }
-    .header--bg {
-        animation: shrink-bg linear forwards;
-        animation-timeline: scroll(root);
-        animation-range: 0% 150px; 
-    }
-    ul {
-        transform-origin: left top;
-        animation: shrink-ul linear forwards;
-        animation-timeline: scroll(root);
-        animation-range: 0% 100px;
-    }
-    .logo {
-        transform-origin: left top;
-        animation: shrink-img linear forwards;
-        animation-timeline: scroll(root);
-        animation-range: 0% 150px;
-    }
-    @keyframes shrink-bg {
-        to {
-            transform: scaleY(.6);
-        } 
-    }
-    @keyframes shrink-img {
-        to {
-            transform: scale(.6) translateY(-12px);
-        } 
-    }
-    @keyframes shrink-ul {
-        to {
-            opacity: 0;
-            max-height: 0px;
-            display: none;
-        } 
-    }
-    @keyframes show {
-        to {
-            max-width: 32px;
-            opacity: 1;
-            display: inline-block;
-        } 
-    }
+@supports (animation-timeline: scroll()) or (animation-timeline: view()) {
 
 }
 
-.header--hero {
-    .card {
-        view-timeline-name: --card;
-        .card--wrapper {
-            animation: move-img linear forwards;
-            animation-timeline: --card;
-            animation-range: contain 25px exit ;
-        }
-        @keyframes move-img {
-            from {
-                transform: translateY(0px);
-            } 
+.header--nav  .logo {
+    transform-origin: left top;
+    animation: shrink-img ease forwards;
+    animation-timeline: scroll(root);
+    animation-range: 0% 150px;
+    @keyframes shrink-img {
+        to {
+            // transform: scale(.6) translateY(-12px);
+            transform: scale(.6) translateY(10px);
+        } 
+    }
+}
+.header--nav .header--bg {
+    transform-origin: left top;
+    animation: shrink-bg ease forwards;
+    animation-timeline: scroll(root);
+    animation-range: 0% 150px; 
+    @keyframes shrink-bg {
+        to {
+            transform: scaleY(.65);
+        } 
+    }
+}
 
+.header--hero .card {
+    view-timeline-name: --card;
+    .card--wrapper {
+        transform-origin: center center;
+        transform: scale(1.5);
+        animation: move-img linear forwards;
+        animation-timeline: --card;
+        animation-range: contain -250px exit -170px ;
+    }
+    @keyframes move-img {
+        to {
+            transform: scale(1)
+        }
+    }
+}
+
+#why-alvagate .wrapper {
+    .item {
+        animation: fade-in ease forwards;
+        animation-timeline: view();
+        animation-range: 0% 30%;
+    }
+    @keyframes fade-in {
+        0% {
+            transform: scale(.4);
+            opacity: 0;
+        } 
+        100% {
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
+}
+
+
+#app {
+    .item {
+        position: sticky;
+        top: 120px;
+    }
+}
+
+@supports (animation-timeline: view()) {
+    #app {
+        .item {
+            animation: fade-up ease forwards;
+            animation-timeline: view();
+            animation-range: 700px contain;
+        }
+        @keyframes fade-up {
             to {
-                transform: translateY(-200px);
+                transform: translateY(20%) scale(.6);
             }
+        }
+        .item:last-child {
+            animation-range: 700px 1700px;
         }
     }
 }
@@ -75,19 +93,23 @@
         transform: translateX(200%) rotate(180deg);
         animation: from-right linear forwards;
         animation-timeline: view();
-        animation-range: entry 10% entry;
+        animation-range: 0% 40%;
+        // animation-range: entry 10% entry;
+        // animation-range: entry 80%;
     }
     .left  {
         opacity: 0;
         transform: translateX(-200%) rotate(-180deg);
         animation: from-left linear forwards;
         animation-timeline: view();
-        animation-range: entry 10% entry;
+        animation-range: 0% 40%;
+        // animation-range: entry entry 200px;
+        // animation-range: entry 10% entry;
     }
     @keyframes from-right {
         0% {
             opacity: 0;
-            transform: translateX(200%) rotate(180deg);
+            transform: translateX(200%) rotate(90deg);
         }        
         100% {
             opacity: 1;
@@ -97,7 +119,7 @@
     @keyframes from-left {
         0% {
             opacity: 0;
-            transform: translateX(-200%) rotate(-180deg);
+            transform: translateX(-200%) rotate(-90deg);
         }        
         100% {
             opacity: 1;
@@ -106,22 +128,24 @@
     }
     .yellow {
         opacity: 0;
-        transform: translateX(-200%);
+        transform: translateX(-100%);
         animation: slide-in-left linear forwards;
         animation-timeline: view();
-        animation-range: entry entry 200px;
+        // animation-range: entry entry 200px;
+        animation-range: 0% 35%;
     }
     .green {
         opacity: 0;
-        transform: translateX(200%);
+        transform: translateX(100%);
         animation: slide-in-right linear forwards;
         animation-timeline: view();
-        animation-range: entry; 
+        // animation-range: entry; 
+        animation-range: 0% 35%;
     }
     @keyframes slide-in-right {
         from {
             opacity: 0;
-            transform: translateX(200%);
+            transform: translateX(100%);
         } 
         to {
             opacity: 1;
@@ -131,7 +155,7 @@
     @keyframes slide-in-left {
         from {
             opacity: 0;
-            transform: translateX(-200%);
+            transform: translateX(-100%);
         } 
         to {
             opacity: 1;
@@ -140,14 +164,31 @@
     }
 }
 
-@keyframes fade-in {
-    0% {
-        transform: scale(.8);
-        opacity: 0;
-    } 
-    100% {
-        transform: scale(1);
-        opacity: 1;
-    }
 
+.slider {
+    // the code is acutaluyl in style.scss file
+  &:hover  {
+    .item {
+      animation-play-state: paused !important;
+      filter: grayscale(1);
+    }
+  }
+  .list {
+    .item {
+      &:hover {
+        filter: grayscale(0);
+      }
+      animation: auto-run 10s linear infinite;
+      animation-delay: calc( (10s / var(--quantity)) * (var(--position) - 1) );
+    }
+  }
+}
+
+@keyframes auto-run {
+    from {
+      left: 100%;
+    } 
+    to {
+      left: calc(var(--width) * -1);
+    }
 }
