@@ -2,8 +2,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
 // font-weight 500, 400
 
-@import 'response.scss';
 @import 'const.scss';
+@import 'response.scss';
 @import './animation.scss';
 @import './header.new.scss';
 @import './main.scss';
@@ -71,6 +71,9 @@ a {
         top: 8px;
         transform: rotate(-1deg);
     }
+}
+a.link {
+  display: inline-block;
 }
 
 .btn {

@@ -1,29 +1,198 @@
 @charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap");
 /* Extra small */
-@media screen and (min-width: 475px) {
-  .container {
-    max-width: 475px; } }
 /* Small */
-@media screen and (min-width: 640px) {
-  .container {
-    max-width: 640px; } }
-/* Medium */
 @media screen and (min-width: 768px) {
-  .container {
-    max-width: 768px; } }
+  body {
+    line-height: 1.5; }
+
+  #header--menu {
+    display: none; }
+
+  .nav--list {
+    display: flex !important;
+    align-items: center;
+    gap: .7rem;
+    list-style: none; }
+
+  header .header--hero .btn {
+    height: 60px; }
+
+  main #why-alvagate .wrapper {
+    display: flex;
+    flex-direction: row !important;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2.5rem 2rem; }
+    main #why-alvagate .wrapper .item {
+      flex-direction: column !important;
+      width: 45%;
+      text-align: center;
+      height: 290px !important; }
+
+  main #why-alvagate .item .imgBx {
+    width: 150px !important; }
+
+  main #app .wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: end; }
+    main #app .wrapper .item {
+      width: 45% !important; }
+
+  main #how-to-use {
+    font-size: 1.5rem; }
+    main #how-to-use h2 {
+      font-size: 1.7rem !important; }
+    main #how-to-use .sub-branch {
+      gap: 5rem !important; }
+    main #how-to-use .right img,
+    main #how-to-use .left img {
+      width: 400px !important; }
+    main #how-to-use .green, main #how-to-use .yellow {
+      margin-top: 4rem !important;
+      padding-block: 1.5rem 2rem;
+      padding-inline: 2.5rem !important; }
+    main #how-to-use ul {
+      line-height: 1.7 !important; }
+
+  main #logos .slider {
+    --width: 110px !important;
+    --height: 110px !important; }
+
+  main #services .card-wrapper {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem; }
+    main #services .card-wrapper .card {
+      padding-block: 2rem;
+      width: fit-content;
+      width: calc(50% - 1rem);
+      align-items: right !important; }
+    main #services .card-wrapper .card ul {
+      padding: 0;
+      text-align: center;
+      padding-block: 1rem 2rem; }
+    main #services .card-wrapper .card ul li {
+      margin-bottom: .5rem; }
+      main #services .card-wrapper .card ul li::before {
+        display: none; } }
+/* Medium */
+@media screen and (min-width: 992px) {
+  header .header--nav li,
+  header .header--nav a {
+    font-size: 1.2rem !important; }
+
+  header .header--hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 2rem;
+    padding-block: 14rem 4rem;
+    position: relative; }
+
+  header .header--hero h1 {
+    font-size: 3.3rem !important; }
+
+  header .header--hero p,
+  header .header--hero a {
+    font-size: 1.3rem !important; }
+
+  header .header--hero small {
+    font-size: 1rem !important; }
+
+  header .header--hero p {
+    margin-bottom: 3rem; }
+
+  header .header--hero .card {
+    position: sticky;
+    top: 12rem;
+    width: 900px !important;
+    height: 400px !important;
+    border: none;
+    filter: drop-shadow(2px 5px 5px #FCC101); }
+    header .header--hero .card .card--wrapper {
+      height: 100%;
+      padding: .5rem; }
+    header .header--hero .card .card--wrapper img {
+      width: 100%;
+      height: auto !important; }
+
+  main {
+    transform: translateY(0px) !important; }
+
+  #form,
+  #question {
+    max-width: 720px;
+    margin-inline: auto; } }
 /* Large Screen */
-@media screen and (min-width: 1024px) {
-  .container {
-    max-width: 1024px; } }
+@media screen and (min-width: 1200px) {
+  header .header--nav li,
+  header .header--nav a {
+    font-size: 1.5rem !important; }
+
+  header .header--nav a {
+    padding: .2em .7em; }
+
+  header .header--hero {
+    align-items: center !important; }
+
+  header .header--hero h1 {
+    font-size: 4rem !important; }
+
+  header .header--hero p,
+  header .header--hero a {
+    font-size: 1.5rem; }
+
+  header .header--hero .card {
+    height: auto !important;
+    width: 630px !important;
+    border: 6px solid #2B2B2B;
+    filter: unset !important; }
+
+  main #why-alvagate {
+    padding-block: 5rem; }
+
+  main #why-alvagate .wrapper .item {
+    height: 310px !important; }
+    main #why-alvagate .wrapper .item h3, main #why-alvagate .wrapper .item p, main #why-alvagate .wrapper .item .link {
+      font-size: 1.5rem !important; }
+
+  main #logos .slider {
+    --width: 150px !important;
+    --height: 150px !important; }
+
+  main #services .card, main #services .offer-card {
+    padding-block: 3rem !important;
+    padding-inline: 2rem !important; }
+
+  main #services .offer-card h3, main #services .offer-card li, main #services .offer-card p, main #services .offer-card .btn,
+  main #services .card h3,
+  main #services .card li,
+  main #services .card p,
+  main #services .card .btn {
+    font-size: 1.3rem !important; }
+  main #services .offer-card h4,
+  main #services .card h4 {
+    font-size: 3.3rem !important; }
+
+  footer #question p, footer #question span, footer #question .btn,
+  footer #form p,
+  footer #form span,
+  footer #form .btn {
+    font-size: 1.3rem !important; }
+
+  .headding {
+    font-size: 1.3rem !important; }
+
+  footer #footer {
+    font-size: 1.2rem !important; }
+    footer #footer .list img {
+      width: 34px !important; } }
 /* Extra Large Screen */
-@media screen and (min-width: 1280px) {
-  .container {
-    max-width: 1280px; } }
 /* Extra Extra Large Screen */
-@media screen and (min-width: 1536px) {
-  .container {
-    max-width: 1536px; } }
 .header--nav .logo {
   transform-origin: left top;
   animation: shrink-img ease forwards;
@@ -178,7 +347,10 @@ header {
 
 .header--nav .nav .right {
   display: flex;
-  flex-direction: row-reverse; }
+  flex-direction: row-reverse;
+  gap: 1rem; }
+  .header--nav .nav .right .nav--list {
+    display: none; }
   .header--nav .nav .right summary {
     list-style: none; }
     .header--nav .nav .right summary img {
@@ -187,8 +359,9 @@ header {
   .header--nav .nav .right .btn {
     display: grid;
     place-items: center;
-    height: 32px;
-    width: 120px;
+    min-height: 32px;
+    height: max-content;
+    min-width: 120px;
     margin-inline: .7rem; }
   .header--nav .nav .right details {
     position: relative; }
@@ -239,6 +412,7 @@ header {
     height: 500px;
     overflow: clip;
     width: fit-content;
+    max-width: 100%;
     border: 6px solid #2B2B2B;
     border-radius: 1rem; }
     .header--hero .card--wrapper {
@@ -263,14 +437,14 @@ main section#why-alvagate {
   main section#why-alvagate .wrapper {
     display: flex;
     flex-direction: column;
-    gap: 3.5rem; }
+    gap: 4.5rem; }
   main section#why-alvagate .wrapper .item {
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-direction: row-reverse;
     height: max-content;
-    gap: 1rem;
+    gap: 1.4rem;
     opacity: 0; }
     main section#why-alvagate .wrapper .item strong {
       font-weight: 500;
@@ -284,35 +458,39 @@ main section#why-alvagate {
       line-height: 1.2; }
     main section#why-alvagate .wrapper .item .textBx p {
       line-height: 1.3; }
-    main section#why-alvagate .wrapper .item .imgBx img {
-      width: 90px;
-      object-fit: cover; }
+    main section#why-alvagate .wrapper .item .imgBx {
+      width: 150px;
+      text-align: center; }
+      main section#why-alvagate .wrapper .item .imgBx img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; }
 
-main section#app {
-  position: relative;
-  z-index: -1; }
-  main section#app .item {
+main section#app .wrapper {
+  position: relative; }
+  main section#app .wrapper .item {
+    margin-inline: auto;
     position: sticky;
     top: 120px;
     text-align: center;
     background: linear-gradient(to right, #FAFEEF 70%, #EDFFFB);
     height: 720px; }
-    main section#app .item h2 {
+    main section#app .wrapper .item h2 {
       padding-block: 2rem; }
-      main section#app .item h2 .icons {
+      main section#app .wrapper .item h2 .icons {
         display: block;
         padding-top: .5rem; }
-        main section#app .item h2 .icons img {
+        main section#app .wrapper .item h2 .icons img {
           width: 32px;
           margin-left: 8px; }
-    main section#app .item .imgBx {
+    main section#app .wrapper .item .imgBx {
       position: relative;
       height: 550px;
       width: 100%;
       border: 7px solid;
       border-radius: 15px;
       overflow: clip; }
-      main section#app .item .imgBx img {
+      main section#app .wrapper .item .imgBx img {
         position: absolute;
         top: 0;
         right: 0;
@@ -326,6 +504,7 @@ main section#how-to-use .init {
     font-size: 1.3; }
 main section#how-to-use .sub-branch {
   display: flex;
+  justify-content: center;
   gap: 1rem; }
   main section#how-to-use .sub-branch h2 {
     padding: .7rem;
@@ -573,6 +752,9 @@ a {
     left: -5px;
     top: 8px;
     transform: rotate(-1deg); }
+
+a.link {
+  display: inline-block; }
 
 .btn {
   display: inline-block;

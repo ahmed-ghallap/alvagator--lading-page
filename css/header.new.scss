@@ -32,8 +32,12 @@ header {
   }
 }
 .header--nav .nav .right {
+  .nav--list {
+    display: none;
+  }
   display: flex;
   flex-direction: row-reverse;
+  gap: 1rem;
   summary {
     list-style: none;
     img {
@@ -45,8 +49,9 @@ header {
   .btn {
     display: grid;
     place-items: center;
-    height: 32px;
-    width: 120px;
+    min-height: 32px;
+    height: max-content ;
+    min-width: 120px;
     margin-inline: .7rem;
   }
   details {
@@ -110,6 +115,8 @@ header {
     height: 500px;
     overflow: clip;
     width: fit-content;
+    max-width: 100%;
+    // width: 400px;
     border: 6px solid $black;
     border-radius: 1rem;
     &--wrapper {

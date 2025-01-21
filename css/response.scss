@@ -10,43 +10,244 @@
 }
 
 /* Extra small */
-@media screen and (min-width: 475px) {
-    .container {
-        max-width: 475px;
-    }
+@media screen and (min-width: 576px) {
 }
 
 /* Small */
-@media screen and (min-width: 640px) {
-    .container {
-        max-width: 640px;
+@media screen and (min-width: 768px) {
+    body {
+        line-height: 1.5;
+    }
+    #header--menu {
+        display: none;
+    }
+    .nav--list {
+        display: flex !important;
+        align-items: center;
+        gap: .7rem;
+        // border: 2px solid;
+        list-style: none;
+    }
+    header .header--hero .btn {
+        // max-width: 400px !important;
+        height: 60px;
+    }
+    main #why-alvagate  .wrapper {
+        display: flex;
+        flex-direction: row !important;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 2.5rem 2rem;
+        .item {
+            flex-direction: column !important;
+            width: 45%;
+            text-align: center;
+            height: 290px !important;
+        }
+    }
+    main #why-alvagate {
+        .item .imgBx {
+            width: 150px !important;
+        }
+    }
+    main #app .wrapper {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: end;
+
+       .item {
+        width: 45% !important;
+       } 
+    }
+    main #how-to-use {
+        font-size: 1.5rem;
+        h2 {
+            font-size: 1.7rem !important;
+        }
+        .sub-branch {
+            gap: 5rem !important;
+        }
+        .right img, 
+        .left img
+         {
+            width: 400px !important;
+        }
+        .green, .yellow {
+            margin-top: 4rem !important;
+            padding-block: 1.5rem 2rem;
+            padding-inline: 2.5rem !important;
+        }
+        ul {
+            line-height: 1.7 !important;
+        }
+    }
+    main #logos .slider {
+        --width: 110px !important;
+        --height: 110px !important;
+    }
+    main #services  .card-wrapper {
+        display: flex; 
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 1rem;
+        .card {
+            padding-block: 2rem;
+            width: fit-content;
+            width: calc(50% - 1rem);
+            align-items: right !important;
+        }
+        .card ul {
+            padding: 0;
+            // padding-inline-start: 1.8rem;
+            text-align: center;
+            padding-block: 1rem 2rem;
+        }
+        .card ul li{
+            margin-bottom: .5rem;
+            &::before {
+                display: none;
+            }
+            // width: 100%;
+        }
     }
 }
 
 /* Medium */
-@media screen and (min-width: 768px) {
-    .container {
-        max-width: 768px;
+@media screen and (min-width: 992px) {
+    header .header--nav li,
+    header .header--nav a {
+        font-size: 1.2rem !important;
+    }
+    header .header--hero {
+        display: flex;
+        justify-content: space-between;
+        align-items:baseline;
+        gap: 2rem;
+        padding-block: 14rem 4rem;
+        position: relative;
+    }
+    header .header--hero h1 {
+        font-size: 3.3rem !important;
+    }
+    header .header--hero p ,
+    header .header--hero a
+    {
+        font-size: 1.3rem !important;
+    }
+    header .header--hero small {
+        font-size: 1rem !important;
+    }
+    header .header--hero p {
+
+        margin-bottom: 3rem;
+    }
+    header .header--hero .card {
+        position: sticky;
+        top: 12rem;
+        width: 900px !important;
+        // height: auto !important;
+        height: 400px !important;
+        border:none;
+        filter: drop-shadow(2px 5px 5px $primary);
+        .card--wrapper {
+            height: 100%;
+            padding: .5rem;
+        }
+        .card--wrapper img {
+            width: 100%;
+            height: auto !important;
+        }
+    }
+    main {
+        transform: translateY(0px) !important;
+    }
+    #form,
+    #question
+    {
+        max-width: 720px;
+        margin-inline: auto;
     }
 }
 
 /* Large Screen */
-@media screen and (min-width: 1024px) {
-    .container {
-        max-width: 1024px;
+@media screen and (min-width: 1200px) {
+    header .header--nav li,
+    header .header--nav a {
+        font-size: 1.5rem !important;
+    }
+    header .header--nav a {
+        padding: .2em .7em;
+    }
+
+    header .header--hero {
+        align-items: center !important;
+    }
+    header .header--hero h1 {
+        font-size: 4rem !important;
+    }
+    header .header--hero p,
+    header .header--hero a {
+        font-size: 1.5rem;
+    }
+    header .header--hero .card--wrapper {
+        // animation: unset !important;
+        // transform: unset !important;
+    }
+    header .header--hero .card{
+        height: auto !important;
+        width: 630px !important;
+        border: 6px solid $black;
+        filter: unset !important;
+        // box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.491);
+    }
+
+    main #why-alvagate {
+        padding-block: 5rem;
+    }
+    main #why-alvagate .wrapper .item {        
+        height: 310px !important;
+        h3, p, .link {
+            font-size: 1.5rem !important;
+        }
+    }
+    main #logos .slider {
+        --width: 150px !important;
+        --height: 150px !important;
+    }
+    main #services .card, main #services .offer-card {
+        padding-block: 3rem !important;
+        padding-inline: 2rem !important;
+    }
+    main #services .offer-card,
+    main #services .card {
+        h3, li,p ,.btn {
+            font-size: 1.3rem !important;
+        }
+        h4 {
+            font-size: 3.3rem !important;
+        }
+    }
+    footer #question,
+    footer #form
+    {
+        p, span, .btn {
+            font-size: 1.3rem !important;
+        }
+    }
+    .headding {
+        font-size: 1.3rem !important;
+    }
+    footer #footer {
+        font-size: 1.2rem !important;
+        .list img {
+            width: 34px !important;
+        }
     }
 }
 
 /* Extra Large Screen */
-@media screen and (min-width: 1280px) {
-    .container {
-        max-width: 1280px;
-    }
+@media screen and (min-width: 1400px) {
 }
 
 /* Extra Extra Large Screen */
-@media screen and (min-width: 1536px) {
-    .container {
-        max-width: 1536px;
-    }
-}
